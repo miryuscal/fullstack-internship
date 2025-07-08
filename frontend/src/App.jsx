@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import Rating from "./components/Rating";
+import productsData from "./products.json"; // ← JSON dosyasını içe aktarıyoruz
 import "./index.css";
 
 function App() {
@@ -9,16 +9,12 @@ function App() {
   const scrollRef = useRef(null);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/products")
-      .then((res) => {
-        setProducts(res.data);
-        const initialColors = {};
-        res.data.forEach((_, idx) => {
-          initialColors[idx] = "yellow";
-        });
-        setActiveColors(initialColors);
-      })
-      .catch((err) => console.error("Error fetching products", err));
+    setProducts(productsData);
+    const initialColors = {};
+    productsData.forEach((_, idx) => {
+      initialColors[idx] = "yellow";
+    });
+    setActiveColors(initialColors);
   }, []);
 
   const handleColorChange = (index, color) => {
@@ -42,9 +38,7 @@ function App() {
         Product List
       </h1>
 
-      {/* Scroll alanı + oklar */}
       <div className="relative flex items-center max-w-screen-xl mx-auto">
-        {/* Sol Ok */}
         <button
           onClick={scrollLeft}
           className="text-2xl text-gray-600 hover:text-black bg-white shadow-md rounded-full w-10 h-10 flex items-center justify-center z-20 -ml-6"
@@ -52,7 +46,6 @@ function App() {
           &lt;
         </button>
 
-        {/* Scrollable içerik */}
         <div
           ref={scrollRef}
           className="overflow-x-auto w-full"
@@ -131,7 +124,6 @@ function App() {
           </div>
         </div>
 
-        {/* Sağ Ok */}
         <button
           onClick={scrollRight}
           className="text-2xl text-gray-600 hover:text-black bg-white shadow-md rounded-full w-10 h-10 flex items-center justify-center z-20 -mr-6"
