@@ -1,0 +1,53 @@
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Book.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('/fonts/Avenir-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Medium.otf') format('opentype');
+  font-weight: 500;
+}
+
+.color-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50% !important;
+  border: 2px solid #ccc;
+  transition: all 0.15s ease-in-out;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.color-circle.active {
+  border-color: black;
+  transform: scale(1.1);
+}
+
+.rating-text {
+  font-family: 'Avenir', sans-serif;
+  font-weight: 400;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* DEFAULT FONT OVERRIDE (optional, not required) */
+body {
+  font-family: 'Avenir', sans-serif;
+}
